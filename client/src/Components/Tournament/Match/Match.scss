@@ -1,0 +1,11 @@
+.match {
+  display: flex;
+
+  &__players {
+    width: 75%;
+  }
+
+  &__score {
+    width: 25%;
+  }
+}
