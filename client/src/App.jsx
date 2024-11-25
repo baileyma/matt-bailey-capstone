@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Router, BrowserRouter, Route } from 'react-router-dom';
 import Tournament from './Components/Tournament/Tournament/Tournament.jsx';
 import Placings from './Components/Tournament/Placings/Placings.jsx';
+import PastTournaments from './Components/Tournament/PastTournaments/PastTournaments.jsx';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       </BrowserRouter> */}
       <Tournament />
       <Placings />
+      <PastTournaments />
     </>
   );
 }
