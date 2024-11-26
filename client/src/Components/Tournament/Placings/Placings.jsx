@@ -1,3 +1,5 @@
+import './Placings.scss';
+
 const Placings = () => {
   const player1 = 'H Mills';
   const player2 = 'G Cooke Yarborough';
@@ -10,21 +12,31 @@ const Placings = () => {
 
   return (
     <>
-      <main>
-        <p>Champion: {player1}</p>
-        <p>Plate Winner: {player7}</p>
+      <main className="Placings">
+        <h3 className="Placings__title">Placings</h3>
 
-        <h3>Placings</h3>
-        <ol>
-          <li>{player1}</li>
-          <li>{player8}</li>
-          <li>{player3}</li>
-          <li>{player5}</li>
-          <li>{player7}</li>
-          <li>{player4}</li>
-          <li>{player2}</li>
-          <li>{player6}</li>
-        </ol>
+        <div className="Placings__wrapper">
+          <div className="Placings__player-list">
+            <ol>
+              <li>{player1}</li>
+              <li>{player8}</li>
+              <li>{player3}</li>
+              <li>{player5}</li>
+              <li>{player7}</li>
+              <li>{player4}</li>
+              <li>{player2}</li>
+              <li>{player6}</li>
+            </ol>
+          </div>
+          <div className="Placings__winners">
+            <p className="Placings__winner-item">
+              Champion <br /> {player1}
+            </p>
+            <p className="Placings__winner-item">
+              Plate Winner <br /> {player7}
+            </p>
+          </div>
+        </div>
       </main>
     </>
   );

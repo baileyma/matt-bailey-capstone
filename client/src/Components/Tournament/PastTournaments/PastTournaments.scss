@@ -1,0 +1,18 @@
+.PastTournaments {
+  &__list {
+    display: flex;
+    flex-direction: row;
+    width: 93vw;
+    list-style: none;
+    padding: 0 0 1rem 0;
+
+    justify-content: flex-start;
+    margin-left: 0;
+    column-gap: 0rem;
+  }
+
+  &__list-item {
+    width: 20%;
+    text-align: left;
+  }
+}

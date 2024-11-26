@@ -1,0 +1,19 @@
+.Header {
+  &__nav-bar {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding-left: 0rem;
+  }
+
+  &__element {
+    background-color: rgb(30, 143, 213, 0.3);
+    border-radius: 15px;
+    padding: 5px;
+    color: black;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}
