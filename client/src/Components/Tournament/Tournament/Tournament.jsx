@@ -14,7 +14,7 @@ const Tournament = () => {
   return (
     <main className="tournament">
       <div className="tournament__opening-round">
-        <h3 className="tournament__title"> Opening Round </h3>
+        <h2 className="tournament__title"> Opening Round </h2>
         <div className="tournament__matches">
           <Match winner={player1} loser={player2} result={'6-3 6-2'} />
           <Match winner={player3} loser={player4} result={'6-3 6-2'} />

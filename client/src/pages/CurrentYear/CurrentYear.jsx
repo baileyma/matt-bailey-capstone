@@ -5,8 +5,8 @@ import './CurrentYear.scss';
 const CurrentYear = () => {
   return (
     <>
-      <Placings />
       <Tournament />
+      <Placings />
     </>
   );
 };

@@ -12,21 +12,23 @@ const PastTournaments = () => {
 
   return (
     <>
-      <ul className="PastTournaments__list">
-        <li className="PastTournaments__list-item">Year</li>
-        <li className="PastTournaments__list-item">Champion</li>
-        <li className="PastTournaments__list-item">Runner-up</li>
-        <li className="PastTournaments__list-item">Plate</li>
-        <li className="PastTournaments__list-item">Venue</li>
-      </ul>
+      <main className="PastTournaments__wrapper">
+        <ul className="PastTournaments__list">
+          <li className="PastTournaments__list-item">Year</li>
+          <li className="PastTournaments__list-item">Champion</li>
+          <li className="PastTournaments__list-item">Runner-up</li>
+          <li className="PastTournaments__list-item">Plate</li>
+          <li className="PastTournaments__list-item">Venue</li>
+        </ul>
 
-      <ul className="PastTournaments__list">
-        <li className="PastTournaments__list-item">2024</li>
-        <li className="PastTournaments__list-item">{player1}</li>
-        <li className="PastTournaments__list-item">{player8}</li>
-        <li className="PastTournaments__list-item">{player7}</li>
-        <li className="PastTournaments__list-item">Romsey</li>
-      </ul>
+        <ul className="PastTournaments__list">
+          <li className="PastTournaments__list-item">2024</li>
+          <li className="PastTournaments__list-item">{player1}</li>
+          <li className="PastTournaments__list-item">{player8}</li>
+          <li className="PastTournaments__list-item">{player7}</li>
+          <li className="PastTournaments__list-item">Romsey</li>
+        </ul>
+      </main>
     </>
   );
 };

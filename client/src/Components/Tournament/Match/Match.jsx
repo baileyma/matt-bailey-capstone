@@ -4,10 +4,14 @@ const Match = ({ winner, loser, result }) => {
   return (
     <>
       <div className="match">
-        <span className="match__players">
+        <p className="match__players">
           {winner} bt {loser}
-        </span>
-        <span className="match__score">{result}</span>
+        </p>
+        <p className="match__score">
+          {result}
+          {'  '}
+          <span>Edit</span>
+        </p>
       </div>
     </>
   );
