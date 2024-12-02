@@ -1,0 +1,19 @@
+.LiveScore {
+  &__players {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &__sets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &__games {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

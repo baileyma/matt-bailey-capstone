@@ -1,4 +1,5 @@
 import './Match.scss';
+import { Link } from 'react-router-dom';
 
 const Match = ({ winner, loser, result }) => {
   return (
@@ -10,7 +11,9 @@ const Match = ({ winner, loser, result }) => {
         <p className="match__score">
           {result}
           {'  '}
-          <span>Edit</span>
+          <Link to>
+            <span>Edit</span>
+          </Link>
         </p>
       </div>
     </>

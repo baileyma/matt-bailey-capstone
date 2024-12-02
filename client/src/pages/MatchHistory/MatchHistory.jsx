@@ -1,4 +1,4 @@
-import './MatchEdit.scss';
+import './MatchHistory.scss';
 
 const MatchEdit = () => {
   return (

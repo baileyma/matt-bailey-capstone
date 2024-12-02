@@ -1,6 +1,6 @@
 import './Placings.scss';
 
-const Placings = () => {
+const Placings = ({ year }) => {
   const player1 = 'H Mills';
   const player2 = 'G Cooke Yarborough';
   const player3 = 'H Taylour';
