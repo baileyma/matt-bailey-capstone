@@ -9,6 +9,7 @@
   }
 
   &__opening-round {
+    box-shadow: 2px 2px 2px 2px;
   }
 
   &__matches {
@@ -20,6 +21,7 @@
   &__later-stage {
     border-bottom: 1px blue solid;
     padding-bottom: 1rem;
+    box-shadow: 2px 2px 2px 2px;
   }
 
   &__heading {

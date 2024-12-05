@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4faf8;
+  color: #081611;
+  font-family: 'Caveat', cursive;
+  font-optical-sizing: auto;
+}
+
+html {
+  width: 100%;
+}
+
+a {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 1rem;
+  margin: 0;
+}

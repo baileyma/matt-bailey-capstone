@@ -1,11 +1,23 @@
 .match {
   display: flex;
+  justify-content: flex-start;
+  padding-left: 1rem;
 
   &__players {
-    width: 75%;
+    width: 65%;
+  }
+
+  &__score-edit {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
   }
 
   &__score {
-    width: 25%;
+  }
+
+  &__edit {
+    text-decoration: none;
+    color: #00703c;
   }
 }

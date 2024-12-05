@@ -16,4 +16,17 @@
     flex-direction: row;
     justify-content: space-around;
   }
+
+  &__games-error {
+    color: red;
+  }
+
+  &__games-toggle {
+    cursor: pointer;
+  }
+
+  &__games-midwrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 }

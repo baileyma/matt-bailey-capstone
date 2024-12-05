@@ -3,9 +3,14 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const DrawForm = () => {
-  const baseUrl = 'http://localhost:8080';
-  const params = useParams();
-  const year = params.year;
+  const baseUrl = import.meta.env.VITE_API_URL;
+  const { year } = useParams();
+
+  const populateRounds = async () => {
+    const response = await axios.post(`${baseUrl}/draw/new/${year}`);
+    console.log(response);
+    return response;
+  };
 
   const postDraw = async (e, year) => {
     e.preventDefault();
@@ -37,113 +42,116 @@ const DrawForm = () => {
   const player8 = 'M Bailey';
 
   return (
-    <form onSubmit={(e) => postDraw(e, year)}>
-      <label name="OR1a" className="DrawForm__input">
-        Opening Round 1a
-        <select name="OR1a" id="OR1a">
-          <option value={player1}>{player1}</option>
-          <option value={player2}>{player2}</option>
-          <option value={player3}>{player3}</option>
-          <option value={player4}>{player4}</option>
-          <option value={player5}>{player5}</option>
-          <option value={player6}>{player6}</option>
-          <option value={player7}>{player7}</option>
-          <option value={player8}>{player8}</option>
-        </select>
-      </label>
-      <label name="OR1b" className="DrawForm__input">
-        Opening Round 1b
-        <select name="OR1b" id="OR1b">
-          <option value={player1}>{player1}</option>
-          <option value={player2}>{player2}</option>
-          <option value={player3}>{player3}</option>
-          <option value={player4}>{player4}</option>
-          <option value={player5}>{player5}</option>
-          <option value={player6}>{player6}</option>
-          <option value={player7}>{player7}</option>
-          <option value={player8}>{player8}</option>
-        </select>
-      </label>
-      <label name="OR2a" className="DrawForm__input">
-        Opening Round 2a
-        <select name="OR2a" id="OR2a">
-          <option value={player1}>{player1}</option>
-          <option value={player2}>{player2}</option>
-          <option value={player3}>{player3}</option>
-          <option value={player4}>{player4}</option>
-          <option value={player5}>{player5}</option>
-          <option value={player6}>{player6}</option>
-          <option value={player7}>{player7}</option>
-          <option value={player8}>{player8}</option>
-        </select>
-      </label>
-      <label name="OR2b" className="DrawForm__input">
-        Opening Round 2b
-        <select name="OR2b" id="OR2b">
-          <option value={player1}>{player1}</option>
-          <option value={player2}>{player2}</option>
-          <option value={player3}>{player3}</option>
-          <option value={player4}>{player4}</option>
-          <option value={player5}>{player5}</option>
-          <option value={player6}>{player6}</option>
-          <option value={player7}>{player7}</option>
-          <option value={player8}>{player8}</option>
-        </select>
-      </label>
-      <label name="OR3a" className="DrawForm__input">
-        Opening Round 3a
-        <select name="OR3a" id="OR3a">
-          <option value={player1}>{player1}</option>
-          <option value={player2}>{player2}</option>
-          <option value={player3}>{player3}</option>
-          <option value={player4}>{player4}</option>
-          <option value={player5}>{player5}</option>
-          <option value={player6}>{player6}</option>
-          <option value={player7}>{player7}</option>
-          <option value={player8}>{player8}</option>
-        </select>
-      </label>
-      <label name="OR3b" className="DrawForm__input">
-        Opening Round 3b
-        <select name="OR3b" id="OR3b">
-          <option value={player1}>{player1}</option>
-          <option value={player2}>{player2}</option>
-          <option value={player3}>{player3}</option>
-          <option value={player4}>{player4}</option>
-          <option value={player5}>{player5}</option>
-          <option value={player6}>{player6}</option>
-          <option value={player7}>{player7}</option>
-          <option value={player8}>{player8}</option>
-        </select>
-      </label>
-      <label name="OR4a" className="DrawForm__input">
-        Opening Round 4a
-        <select name="OR4a" id="OR4a">
-          <option value={player1}>{player1}</option>
-          <option value={player2}>{player2}</option>
-          <option value={player3}>{player3}</option>
-          <option value={player4}>{player4}</option>
-          <option value={player5}>{player5}</option>
-          <option value={player6}>{player6}</option>
-          <option value={player7}>{player7}</option>
-          <option value={player8}>{player8}</option>
-        </select>
-      </label>
-      <label name="OR4b" className="DrawForm__input">
-        Opening Round 4b
-        <select name="OR4b" id="OR4b">
-          <option value={player1}>{player1}</option>
-          <option value={player2}>{player2}</option>
-          <option value={player3}>{player3}</option>
-          <option value={player4}>{player4}</option>
-          <option value={player5}>{player5}</option>
-          <option value={player6}>{player6}</option>
-          <option value={player7}>{player7}</option>
-          <option value={player8}>{player8}</option>
-        </select>
-      </label>
-      <button type="Submit">Submit</button>
-    </form>
+    <>
+      <form onSubmit={(e) => postDraw(e, year)}>
+        <label name="OR1a" className="DrawForm__input">
+          Opening Round 1a
+          <select name="OR1a" id="OR1a">
+            <option value={player1}>{player1}</option>
+            <option value={player2}>{player2}</option>
+            <option value={player3}>{player3}</option>
+            <option value={player4}>{player4}</option>
+            <option value={player5}>{player5}</option>
+            <option value={player6}>{player6}</option>
+            <option value={player7}>{player7}</option>
+            <option value={player8}>{player8}</option>
+          </select>
+        </label>
+        <label name="OR1b" className="DrawForm__input">
+          Opening Round 1b
+          <select name="OR1b" id="OR1b">
+            <option value={player1}>{player1}</option>
+            <option value={player2}>{player2}</option>
+            <option value={player3}>{player3}</option>
+            <option value={player4}>{player4}</option>
+            <option value={player5}>{player5}</option>
+            <option value={player6}>{player6}</option>
+            <option value={player7}>{player7}</option>
+            <option value={player8}>{player8}</option>
+          </select>
+        </label>
+        <label name="OR2a" className="DrawForm__input">
+          Opening Round 2a
+          <select name="OR2a" id="OR2a">
+            <option value={player1}>{player1}</option>
+            <option value={player2}>{player2}</option>
+            <option value={player3}>{player3}</option>
+            <option value={player4}>{player4}</option>
+            <option value={player5}>{player5}</option>
+            <option value={player6}>{player6}</option>
+            <option value={player7}>{player7}</option>
+            <option value={player8}>{player8}</option>
+          </select>
+        </label>
+        <label name="OR2b" className="DrawForm__input">
+          Opening Round 2b
+          <select name="OR2b" id="OR2b">
+            <option value={player1}>{player1}</option>
+            <option value={player2}>{player2}</option>
+            <option value={player3}>{player3}</option>
+            <option value={player4}>{player4}</option>
+            <option value={player5}>{player5}</option>
+            <option value={player6}>{player6}</option>
+            <option value={player7}>{player7}</option>
+            <option value={player8}>{player8}</option>
+          </select>
+        </label>
+        <label name="OR3a" className="DrawForm__input">
+          Opening Round 3a
+          <select name="OR3a" id="OR3a">
+            <option value={player1}>{player1}</option>
+            <option value={player2}>{player2}</option>
+            <option value={player3}>{player3}</option>
+            <option value={player4}>{player4}</option>
+            <option value={player5}>{player5}</option>
+            <option value={player6}>{player6}</option>
+            <option value={player7}>{player7}</option>
+            <option value={player8}>{player8}</option>
+          </select>
+        </label>
+        <label name="OR3b" className="DrawForm__input">
+          Opening Round 3b
+          <select name="OR3b" id="OR3b">
+            <option value={player1}>{player1}</option>
+            <option value={player2}>{player2}</option>
+            <option value={player3}>{player3}</option>
+            <option value={player4}>{player4}</option>
+            <option value={player5}>{player5}</option>
+            <option value={player6}>{player6}</option>
+            <option value={player7}>{player7}</option>
+            <option value={player8}>{player8}</option>
+          </select>
+        </label>
+        <label name="OR4a" className="DrawForm__input">
+          Opening Round 4a
+          <select name="OR4a" id="OR4a">
+            <option value={player1}>{player1}</option>
+            <option value={player2}>{player2}</option>
+            <option value={player3}>{player3}</option>
+            <option value={player4}>{player4}</option>
+            <option value={player5}>{player5}</option>
+            <option value={player6}>{player6}</option>
+            <option value={player7}>{player7}</option>
+            <option value={player8}>{player8}</option>
+          </select>
+        </label>
+        <label name="OR4b" className="DrawForm__input">
+          Opening Round 4b
+          <select name="OR4b" id="OR4b">
+            <option value={player1}>{player1}</option>
+            <option value={player2}>{player2}</option>
+            <option value={player3}>{player3}</option>
+            <option value={player4}>{player4}</option>
+            <option value={player5}>{player5}</option>
+            <option value={player6}>{player6}</option>
+            <option value={player7}>{player7}</option>
+            <option value={player8}>{player8}</option>
+          </select>
+        </label>
+        <button type="Submit">Submit</button>
+      </form>
+      <button onClick={populateRounds}>Populate rounds for {year}</button>
+    </>
   );
 };
 

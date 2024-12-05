@@ -1,21 +1,61 @@
+@use '../../styles/partials/variables' as *;
+
 .Header {
+  background-color: $primary-wimbledon-color;
+  width: 100%;
+
+  &__title {
+    color: $primary-text-color;
+    text-align: center;
+  }
+
   &__nav-bar {
     list-style: none;
     display: flex;
     justify-content: space-around;
     padding-left: 0rem;
-    border-bottom: 1px blue solid;
+    border-bottom: 1px $primary-text-color solid;
+
     padding-bottom: 1rem;
   }
 
   &__element {
-    background-color: rgb(30, 143, 213, 0.3);
-    border-radius: 15px;
+    border-radius: 4p x;
     padding: 5px;
-    color: black;
+    color: $primary-text-color;
+
+    &--years {
+      position: relative;
+    }
   }
 
   &__link {
     text-decoration: none;
+  }
+
+  &__dropdown {
+    position: absolute;
+    background-color: $primary-wimbledon-faded;
+    top: 3rem;
+  }
+
+  &__dropdown-trigger {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__dropdown-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__dropdown-list > li {
+  }
+
+  &__link-text {
+    text-decoration: none;
+    color: black;
   }
 }

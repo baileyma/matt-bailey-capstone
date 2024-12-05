@@ -3,23 +3,27 @@ import Match from '../Match/Match';
 import './Tournament.scss';
 import axios from 'axios';
 
-const Tournament = ({ year }) => {
-  const baseUrl = 'http://localhost:8080';
+const Tournament = ({ tournamentYear }) => {
+  const baseUrl = import.meta.env.VITE_API_URL;
 
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState(null);
 
-  console.log(year);
-  const year2 = 2025;
+  const year = tournamentYear;
 
-  const getPlayers = async (year) => {
-    const response = await axios.get(`${baseUrl}/players/${year2}`);
-    return response.data;
+  const getPlayers = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/players/${year}`);
+
+      return response.data;
+    } catch (error) {
+      console.error(`Error retrieving players: ${error}`);
+    }
   };
 
   useEffect(() => {
     const fetchPlayers = async () => {
       const playersObj = await getPlayers();
-      console.log(playersObj);
+
       setPlayers(playersObj);
     };
     fetchPlayers();
@@ -27,25 +31,9 @@ const Tournament = ({ year }) => {
 
   console.log(players);
 
-  const {
-    match1player1,
-    match1player2,
-    match2player1,
-    match2player2,
-    match3player1,
-    match3player2,
-    match4player1,
-    match4player2,
-  } = players[0];
-
-  const player1 = 'H Mills';
-  const player2 = 'G Cooke Yarborough';
-  const player3 = 'H Taylour';
-  const player4 = 'E Barry';
-  const player5 = 'F Lowe';
-  const player6 = 'H Bailey';
-  const player7 = 'P Fuller';
-  const player8 = 'M Bailey';
+  if (!players) {
+    return <h3>Loading....</h3>;
+  }
 
   return (
     <main className="tournament">
@@ -53,24 +41,28 @@ const Tournament = ({ year }) => {
         <h2 className="tournament__title"> Opening Round </h2>
         <div className="tournament__matches">
           <Match
-            winner={match1player1}
-            loser={match1player2}
-            result={'6-3 6-2'}
+            winner={players[0].player1_name}
+            loser={players[0].player2_name}
+            result={players[0].score}
+            matchID={players[0].id}
           />
           <Match
-            winner={match2player1}
-            loser={match2player2}
-            result={'6-3 6-2'}
+            winner={players[1].player1_name}
+            loser={players[1].player2_name}
+            result={players[1].score}
+            matchID={players[1].id}
           />
           <Match
-            winner={match3player1}
-            loser={match3player2}
-            result={'6-2 6-3'}
+            winner={players[2].player1_name}
+            loser={players[2].player2_name}
+            result={players[2].score}
+            matchID={players[2].id}
           />
           <Match
-            winner={match4player1}
-            loser={match4player2}
-            result={'6-3 6-3'}
+            winner={players[3].player1_name}
+            loser={players[3].player2_name}
+            result={players[3].score}
+            matchID={players[3].id}
           />
         </div>
       </div>
@@ -79,19 +71,35 @@ const Tournament = ({ year }) => {
         <h2 className="tournament__title">Plate</h2>
         <h3 className="tournament__title"> Semi Final </h3>
         <div className="tournament__matches">
-          <Match winner={player4} loser={player2} result={'x-x x-x'} />
-          <Match winner={player7} loser={player6} result={'x-x x-x'} />
+          <Match
+            winner={players[4].player1_name}
+            loser={players[4].player2_name}
+            result={players[4].score}
+            matchID={players[4].id}
+          />
+          <Match
+            winner={players[5].player1_name}
+            loser={players[5].player2_name}
+            result={players[5].score}
+            matchID={players[5].id}
+          />
         </div>
         <div>
           <h3 className="tournament__title"> 3rd Place Playoff</h3>
-          <Match winner={player2} loser={player6} result={'x-x x-x'} />
+          <Match
+            winner={players[6].player1_name}
+            loser={players[6].player2_name}
+            result={players[6].score}
+            matchID={players[6].id}
+          />
         </div>
         <div>
           <h3 className="tournament__title"> Final</h3>
           <Match
-            winner={player7}
-            loser={player4}
-            result={'7-6 (7-5) 7-6 (7-3)'}
+            winner={players[7].player1_name}
+            loser={players[7].player2_name}
+            result={players[7].score}
+            matchID={players[7].id}
           />
         </div>
       </div>
@@ -100,16 +108,36 @@ const Tournament = ({ year }) => {
         <h2 className="tournament__title">Main</h2>
         <h3 className="tournament__title"> Semi Final </h3>
         <div className="tournament__matches">
-          <Match winner={player1} loser={player3} result={'x-x x-x'} />
-          <Match winner={player8} loser={player5} result={'x-x x-x'} />
+          <Match
+            winner={players[8].player1_name}
+            loser={players[8].player2_name}
+            result={players[8].score}
+            matchID={players[8].id}
+          />
+          <Match
+            winner={players[9].player1_name}
+            loser={players[9].player2_name}
+            result={players[9].score}
+            matchID={players[9].id}
+          />
         </div>
         <div>
           <h3 className="tournament__title"> 3rd Place Playoff</h3>
-          <Match winner={player3} loser={player5} result={'x-x x-x'} />
+          <Match
+            winner={players[10].player1_name}
+            loser={players[10].player2_name}
+            result={players[10].score}
+            matchID={players[10].id}
+          />
         </div>
         <div>
           <h3 className="tournament__title"> Final</h3>
-          <Match winner={player1} loser={player8} result={'0-6 6-3 6-4'} />
+          <Match
+            winner={players[11].player1_name}
+            loser={players[11].player2_name}
+            result={players[11].score}
+            matchID={players[11].id}
+          />
         </div>
       </div>
     </main>
