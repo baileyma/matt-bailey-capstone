@@ -1,20 +1,20 @@
 import './Match.scss';
 import { Link } from 'react-router-dom';
 
-const Match = ({ winner, loser, result, matchID }) => {
+const Match = ({ player1, player2, result, matchID }) => {
   const baseUrl = import.meta.env.VITE_LOCAL_URL;
 
   return (
     <>
       <div className="match">
         <p className="match__players">
-          {winner || 'TBC'} vs {loser || 'TBC'}
+          {player1} vs {player2}
         </p>
         <div className="match__score-edit">
-          <p className="match__score">{result || 'TBC'}</p>
+          <p className="match__score">{result}</p>
 
           <Link className="match__edit" to={`${baseUrl}/live-score/${matchID}`}>
-            <span>Edit</span>
+            <span>Live Score</span>
           </Link>
         </div>
       </div>

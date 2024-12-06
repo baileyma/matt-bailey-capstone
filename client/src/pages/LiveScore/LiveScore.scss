@@ -1,8 +1,15 @@
+@use '../../styles/partials/variables' as *;
+
 .LiveScore {
   &__players {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+  }
+
+  &__player-item {
+    border: 1px black dashed;
+    padding: 1rem 2rem;
   }
 
   &__sets {
@@ -21,12 +28,47 @@
     color: red;
   }
 
+  &__button {
+    cursor: pointer;
+    border: none;
+    background-color: $primary-wimbledon-color;
+    margin: 1.3rem 0;
+    border-radius: 8px;
+    color: white;
+  }
+
   &__games-toggle {
     cursor: pointer;
+    font-size: 2rem;
+    border: 1px black dashed;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  &__plusminus-wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
   }
 
   &__games-midwrapper {
     display: flex;
     justify-content: space-between;
+  }
+
+  &__end-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: 1.3rem 0;
+  }
+
+  &__lower-button {
+    cursor: pointer;
+    border: none;
+    background-color: $primary-wimbledon-color;
+    height: 4rem;
+    border-radius: 8px;
+    color: white;
   }
 }

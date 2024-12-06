@@ -2,6 +2,8 @@
   display: flex;
   justify-content: flex-start;
   padding-left: 1rem;
+  border-top: 1px black dashed;
+  border-bottom: 1px black dashed;
 
   &__players {
     width: 65%;
@@ -19,5 +21,10 @@
   &__edit {
     text-decoration: none;
     color: #00703c;
+    border-top: 1px black dashed;
+    border-left: 1px black dashed;
+    border-right: 1px black dashed;
+    width: 50%;
+    text-align: center;
   }
 }

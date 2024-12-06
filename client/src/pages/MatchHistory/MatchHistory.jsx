@@ -126,8 +126,8 @@ const MatchEdit = () => {
         </div>
 
         <div className="MatchEdit__wins-count">
-          <p>{matchesLeft.length}</p>
-          <p>{matchesRight.length}</p>
+          {matchesLeft && <p>{matchesLeft.length}</p>}
+          {matchesRight && <p>{matchesRight.length}</p>}
         </div>
 
         <div className="MatchEdit__previous-matches">

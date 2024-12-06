@@ -3,6 +3,7 @@
 .Header {
   background-color: $primary-wimbledon-color;
   width: 100%;
+  font-size: 1rem;
 
   &__title {
     color: $primary-text-color;
@@ -35,7 +36,7 @@
 
   &__dropdown {
     position: absolute;
-    background-color: $primary-wimbledon-faded;
+    background-color: $primary-wimbledon-color;
     top: 3rem;
   }
 
@@ -43,6 +44,10 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__dropdown-wrapper {
+    display: flex;
   }
 
   &__dropdown-list {
@@ -57,5 +62,9 @@
   &__link-text {
     text-decoration: none;
     color: black;
+  }
+
+  &__arrow {
+    cursor: pointer;
   }
 }

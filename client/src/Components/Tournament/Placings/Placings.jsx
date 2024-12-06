@@ -1,14 +1,66 @@
 import './Placings.scss';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import trophy from '../../../assets/data/trophy.jpg';
 
 const Placings = ({ year }) => {
-  const player1 = 'H Mills';
-  const player2 = 'G Cooke Yarborough';
-  const player3 = 'H Taylour';
-  const player4 = 'E Barry';
-  const player5 = 'F Lowe';
-  const player6 = 'H Bailey';
-  const player7 = 'P Fuller';
-  const player8 = 'M Bailey';
+  const baseUrl = import.meta.env.VITE_API_URL;
+
+  const [finals, setFinals] = useState(null);
+
+  const getPlacings = async () => {
+    const response = await axios.get(`${baseUrl}/players/placings/${year}`);
+
+    return response.data;
+  };
+
+  useEffect(() => {
+    const fetchPlacings = async () => {
+      const response = await getPlacings();
+      setFinals(response);
+    };
+    fetchPlacings();
+  }, []);
+
+  console.log(finals);
+
+  let champion;
+  let runner_up;
+  let third_place;
+  let fourth_place;
+  let plate_winner;
+  let plate_runner_up;
+  let seventh_place;
+  let eigth_place;
+
+  if (!finals) {
+    return (
+      <>
+        <h2>Loading...</h2>
+      </>
+    );
+  }
+
+  for (let final of finals) {
+    if (final.draw === 'Main') {
+      if (final.round === 'Final') {
+        champion = final.winner;
+        runner_up = final.loser;
+      } else {
+        third_place = final.winner;
+        fourth_place = final.loser;
+      }
+    }
+    if (final.draw === 'Plate') {
+      if (final.round === 'Final') {
+        plate_winner = final.winner;
+        plate_runner_up = final.loser;
+      } else {
+        seventh_place = final.winner;
+        eigth_place = final.loser;
+      }
+    }
+  }
 
   return (
     <>
@@ -18,23 +70,37 @@ const Placings = ({ year }) => {
         <div className="Placings__wrapper">
           <div className="Placings__player-list">
             <ol>
-              <li>{player1}</li>
-              <li>{player8}</li>
-              <li>{player3}</li>
-              <li>{player5}</li>
-              <li>{player7}</li>
-              <li>{player4}</li>
-              <li>{player2}</li>
-              <li>{player6}</li>
+              <li>{champion || 'TBC'}</li>
+              <li>{runner_up || 'TBC'}</li>
+              <li>{third_place || 'TBC'}</li>
+              <li>{fourth_place || 'TBC'}</li>
+              <li>{plate_winner || 'TBC'}</li>
+              <li>{plate_runner_up || 'TBC'}</li>
+              <li>{seventh_place || 'TBC'}</li>
+              <li>{eigth_place || 'TBC'}</li>
             </ol>
           </div>
           <div className="Placings__winners">
-            <p className="Placings__winner-item">
-              Champion <br /> {player1}
-            </p>
-            <p className="Placings__winner-item">
-              Plate Winner <br /> {player7}
-            </p>
+            <div className="Placings__winner-wrapper">
+              <p className="Placings__winner-item">
+                Champion <br /> {champion || 'TBC'}
+              </p>
+              <img
+                className="Placings__trophy"
+                src={trophy}
+                alt="trophy icon"
+              />
+            </div>
+            <div className="Placings__winner-wrapper">
+              <p className="Placings__winner-item">
+                Plate Winner <br /> {plate_winner || 'TBC'}
+              </p>
+              <img
+                className="Placings__trophy"
+                src={trophy}
+                alt="trophy icon"
+              />
+            </div>
           </div>
         </div>
       </main>

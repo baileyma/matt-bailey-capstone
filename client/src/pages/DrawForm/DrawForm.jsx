@@ -1,16 +1,17 @@
 import './DrawForm.scss';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const DrawForm = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
   const { year } = useParams();
 
-  const populateRounds = async () => {
-    const response = await axios.post(`${baseUrl}/draw/new/${year}`);
-    console.log(response);
-    return response;
-  };
+  // const populateRounds = async () => {
+  //   const response = await axios.post(`${baseUrl}/draw/new/${year}`);
+  //   console.log(response);
+  //   return response;
+  // };
 
   const postDraw = async (e, year) => {
     e.preventDefault();
@@ -150,7 +151,10 @@ const DrawForm = () => {
         </label>
         <button type="Submit">Submit</button>
       </form>
-      <button onClick={populateRounds}>Populate rounds for {year}</button>
+      <Link to={`/${year}`}>
+        <button>Go to {year} tournament</button>
+      </Link>
+      {/* <button onClick={populateRounds}>Populate rounds for {year}</button> */}
     </>
   );
 };

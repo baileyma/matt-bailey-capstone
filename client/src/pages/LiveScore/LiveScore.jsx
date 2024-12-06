@@ -12,7 +12,7 @@ const LiveScore = () => {
   const [matchData, setMatchData] = useState([]);
 
   const getMatch = async (matchID) => {
-    const response = await axios.get(`${baseURL}/${matchID}`);
+    const response = await axios.get(`${baseURL}/matches/${matchID}`);
     return response;
   };
 
@@ -127,7 +127,10 @@ const LiveScore = () => {
       loserID: loserID,
       score: score,
     };
-    const response = axios.put(`${baseURL}/${matchID}`, resultObj);
+    const response = await axios.put(
+      `${baseURL}/matches/${matchID}`,
+      resultObj
+    );
     console.log(response);
   };
 
@@ -140,8 +143,8 @@ const LiveScore = () => {
         </h3>
 
         <div className="LiveScore__players">
-          <p>{player1_name}</p>
-          <p>{player2_name}</p>
+          <p className="LiveScore__player-item">{player1_name || 'Player 1'}</p>
+          <p className="LiveScore__player-item">{player2_name || 'Player 2'}</p>
         </div>
 
         <div className="LiveScore__sets">
@@ -151,87 +154,74 @@ const LiveScore = () => {
         </div>
 
         <div className="LiveScore__games">
-          <p
-            className="LiveScore__games-toggle"
-            onClick={() => setGamesOne(gamesOne + 1)}
-          >
-            +
-          </p>
-          <p
-            className="LiveScore__games-toggle"
-            onClick={() => setGamesOne(gamesOne - 1)}
-          >
-            -
-          </p>
           <p>{gamesOne}</p>
           <p>Games</p>
           <p>{gamesTwo}</p>
-          <p
-            className="LiveScore__games-toggle"
-            onClick={() => setGamesTwo(gamesTwo + 1)}
-          >
-            +
-          </p>
-          <p
-            className="LiveScore__games-toggle"
-            onClick={() => setGamesTwo(gamesTwo - 1)}
-          >
-            -
-          </p>
-          <button className="LiveScore__games-toggle" onClick={setClearance}>
+        </div>
+        <div className="LiveScore__games">
+          <div className="LiveScore__plusminus-wrapper">
+            <p
+              className="LiveScore__games-toggle"
+              onClick={() => setGamesOne(gamesOne + 1)}
+            >
+              +
+            </p>
+            <p
+              className="LiveScore__games-toggle"
+              onClick={() => setGamesOne(gamesOne - 1)}
+            >
+              -
+            </p>
+          </div>
+          <button className="LiveScore__button" onClick={setClearance}>
             Complete Set
           </button>
+          <div className="LiveScore__plusminus-wrapper">
+            <p
+              className="LiveScore__games-toggle"
+              onClick={() => setGamesTwo(gamesTwo + 1)}
+            >
+              +
+            </p>
+            <p
+              className="LiveScore__games-toggle"
+              onClick={() => setGamesTwo(gamesTwo - 1)}
+            >
+              -
+            </p>
+          </div>
         </div>
         <div className="LiveScore__games-midwrapper">
           <p>Previous sets: {!isGameOver ? `${sets}` : ''}</p>
           {raiseError && <p className="LiveScore__games-error">{raiseError}</p>}
         </div>
 
-        {/* <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            publishScore(
-              e.target.winner.value,
-              e.target.loser.value,
-              e.target.score.value
-            );
-          }}
-        >
-          <label>Manually enter final score:</label>
-          <input type="text" name="score" value={sets.length ? sets : score} />
-
-          <label>Winner:</label>
-          <select name="winner" id="winner">
-            <option value={player1_id}>{player1_name}</option>
-            <option value={player2_id}>{player2_name}</option>
-          </select>
-
-          <label>Loser :</label>
-          <select name="loser" id="loser">
-            <option value={player1_id}>{player1_name}</option>
-            <option value={player2_id}>{player2_name}</option>
-          </select>
-
-          <button type="submit">Submit</button>
-        </form> */}
-
         {isGameOver && (
           <p>
             {winner} beats {loser} {sets}
           </p>
         )}
-        <button onClick={() => publishScore(winner_id, loser_id, sets)}>
-          Submit score
-        </button>
+        <div className="LiveScore__end-wrapper">
+          <button
+            className="LiveScore__lower-button"
+            onClick={() => {
+              console.log(winner_id, loser_id, sets);
+              publishScore(winner_id, loser_id, sets);
+            }}
+          >
+            Submit score
+          </button>
 
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            navigate(`../../${year}`);
-          }}
-        >
-          Back to {year} tournament
-        </button>
+          <button
+            className="LiveScore__lower-button"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(`../../${year}`);
+            }}
+          >
+            Back to {year} tournament
+          </button>
+        </div>
       </main>
     </>
   );
