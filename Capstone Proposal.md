@@ -82,6 +82,14 @@ Describe your data and the relationships between the data points. You can show t
 
 List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
 
+Endpoint:
+
+https://financialmodelingprep.com/api/v3/profile/
+
+path param: company symbol (string)
+
+
+
 ## Roadmap
 
 Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation working back from the capstone due date.

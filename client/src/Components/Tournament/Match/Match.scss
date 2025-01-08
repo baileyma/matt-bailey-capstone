@@ -18,6 +18,21 @@
   &__score {
   }
 
+  &__delete {
+    border-top: 1px black dashed;
+    border-left: 1px black dashed;
+    border-right: 1px black dashed;
+    width: 25%;
+    color: #00703c;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  &__edit-container {
+    display: flex;
+  }
+
   &__edit {
     text-decoration: none;
     color: #00703c;
@@ -26,5 +41,6 @@
     border-right: 1px black dashed;
     width: 50%;
     text-align: center;
+    cursor: pointer;
   }
 }

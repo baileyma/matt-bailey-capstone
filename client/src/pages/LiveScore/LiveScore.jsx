@@ -11,6 +11,8 @@ const LiveScore = () => {
   const navigate = useNavigate();
   const [matchData, setMatchData] = useState([]);
 
+  const [scoreSubmitted, setScoreSubmitted] = useState(false);
+
   const getMatch = async (matchID) => {
     const response = await axios.get(`${baseURL}/matches/${matchID}`);
     return response;
@@ -54,6 +56,8 @@ const LiveScore = () => {
 
   const [winner_id, setWinner_id] = useState('');
   const [loser_id, setLoser_id] = useState('');
+
+  const [submitError, setSubmitError] = useState(false);
 
   const setClearance = () => {
     setRaiseError('');
@@ -134,13 +138,25 @@ const LiveScore = () => {
     console.log(response);
   };
 
+  const submitScore = () => {
+    if (!isGameOver) {
+      setSubmitError(true);
+      return;
+    }
+    setScoreSubmitted(true);
+    publishScore(winner_id, loser_id, sets);
+  };
+
   return (
     <>
       <main className="LiveScore">
-        <h2>Live Score</h2>
-        <h3>
-          {year} : {draw} Draw: {round} : Game {round_number}
-        </h3>
+        <div className="LiveScore__round-info">
+          <h2>{year}</h2>
+          <h3>
+            {draw} Draw : {round}
+          </h3>
+          <p>Game {round_number}</p>
+        </div>
 
         <div className="LiveScore__players">
           <p className="LiveScore__player-item">{player1_name || 'Player 1'}</p>
@@ -191,22 +207,40 @@ const LiveScore = () => {
             </p>
           </div>
         </div>
+
+        {raiseError ? (
+          <p className="LiveScore__games-error">{raiseError}</p>
+        ) : (
+          ''
+        )}
         <div className="LiveScore__games-midwrapper">
-          <p>Previous sets: {!isGameOver ? `${sets}` : ''}</p>
-          {raiseError && <p className="LiveScore__games-error">{raiseError}</p>}
+          {!isGameOver ? (
+            <p>Previous sets: {sets} </p>
+          ) : (
+            <p>
+              {winner} beats {loser} {sets}
+            </p>
+          )}
         </div>
 
-        {isGameOver && (
-          <p>
-            {winner} beats {loser} {sets}
+        {!scoreSubmitted ? (
+          <p className="LiveScore__submit-message-reminder">
+            *** Remember to hit submit before leaving this page ***
+          </p>
+        ) : (
+          <p className="LiveScore__submit-message-complete">Score Submitted</p>
+        )}
+        {submitError && (
+          <p className="LiveScore__submit-message-reminder">
+            Game not yet complete!
           </p>
         )}
+
         <div className="LiveScore__end-wrapper">
           <button
             className="LiveScore__lower-button"
             onClick={() => {
-              console.log(winner_id, loser_id, sets);
-              publishScore(winner_id, loser_id, sets);
+              submitScore();
             }}
           >
             Submit score

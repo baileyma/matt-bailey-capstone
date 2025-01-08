@@ -1,6 +1,40 @@
+@use '../../styles/partials/mixins' as *;
+
 .DrawForm {
+  &__title {
+    text-align: center;
+  }
+
+  &__form {
+    padding: 2vh 0 4vh 2vw;
+  }
+
   &__input {
     display: block;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5vh;
+  }
+
+  &__button {
+    @include button-style;
+  }
+
+  &__form-items {
+    @include form-dropdown;
+    height: 2rem;
+    margin-left: 35vw;
+  }
+
+  &__submit-message {
+    color: red;
+  }
+
+  &__submit-message--success {
+    color: green;
   }
 }

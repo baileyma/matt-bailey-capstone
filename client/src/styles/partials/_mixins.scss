@@ -1,0 +1,19 @@
+@use '../../styles/partials/variables' as *;
+
+@mixin button-style() {
+  cursor: pointer;
+  border: none;
+  background-color: $primary-wimbledon-color;
+  height: 4rem;
+  border-radius: 8px;
+  color: white;
+}
+
+@mixin form-dropdown() {
+  background-color: $primary-wimbledon-color;
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

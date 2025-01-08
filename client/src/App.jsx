@@ -5,6 +5,7 @@ import CurrentYear from './pages/CurrentYear/CurrentYear.jsx';
 import MatchHistory from './pages/MatchHistory/MatchHistory.jsx';
 import LiveScore from './pages/LiveScore/LiveScore.jsx';
 import DrawForm from './pages/DrawForm/DrawForm.jsx';
+import Home from './pages/Home/Home.jsx';
 import './App.scss';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Navigate to="/2024" replace />} />
+          <Route path="/" element={<Home />} />
           <Route path="/:year" element={<CurrentYear />} />
           <Route path="/live-score/:matchID" element={<LiveScore />} />
           <Route path="/enter-draw/:year" element={<DrawForm />} />

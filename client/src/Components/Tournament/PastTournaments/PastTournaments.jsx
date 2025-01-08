@@ -3,15 +3,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const PastTournaments = () => {
-  const player1 = 'H Mills';
-  const player2 = 'G Cooke Yarborough';
-  const player3 = 'H Taylour';
-  const player4 = 'E Barry';
-  const player5 = 'F Lowe';
-  const player6 = 'H Bailey';
-  const player7 = 'P Fuller';
-  const player8 = 'M Bailey';
-
   const baseUrl = import.meta.env.VITE_API_URL;
 
   const [finals, setFinals] = useState(null);
@@ -32,26 +23,6 @@ const PastTournaments = () => {
   let champions = {};
   let runner_ups = {};
   let plate_winners = {};
-
-  // array of objects (main, plate) (year)
-
-  // need an array of objects (year)
-
-  let honoursBoard2 = [
-    {
-      year: 2021,
-      champion: 'H Mills',
-      runner_up: 'M Bailey',
-      plate_winner: 'P Fuller',
-    },
-  ];
-
-  // for (let final of finals) {
-  //   if (final.draw === 'Main') {
-  //     honoursBoard2.year = final.year;
-  //     honoursBoard2.champion = final.champion;
-  //     honoursBoard2.runner_up = final.loser;
-  //   }
 
   if (!finals) {
     return (
