@@ -1,4 +1,4 @@
-import { Routes, BrowserRouter, Route, Navigate } from 'react-router-dom';
+import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import History from './pages/History/History.jsx';
 import Header from './Components/Header/Header.jsx';
 import CurrentYear from './pages/CurrentYear/CurrentYear.jsx';
