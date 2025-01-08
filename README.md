@@ -33,7 +33,7 @@ This website handles the **heavy lifting** so my friend can focus on the tennis:
 - **🎮 Input Match Results**: My friend uses a live scoring page through which he eventually inputs the winner and score for each match.  
 - **📅 Generates Draws**: After the opening round, the website automatically creates the matchups for the Plate and Main Draw later rounds.  
 - **🏅 Tracks Champions**: The website dynamically updates a virtual **Honours Board** with each year’s Plate and Main Draw Champions.  
-- **📅 **Head-To-Head** **: Players can look back at all historical results and rivalries via the site’s Head-To-Head page. 
+- **📅 Head-To-Head**: Players can look back at all historical results and rivalries via the site’s Head-To-Head page. 
 
 ---
 
