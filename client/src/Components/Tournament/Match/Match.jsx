@@ -60,7 +60,10 @@ const Match = ({
             <span onClick={() => resetScore()} className="match__edit">
               Reset Score
             </span>
-            <Link className="match__edit" to={`/live-score/${matchID}`}>
+            <Link
+              className="match__edit"
+              to={`${baseUrl}/live-score/${matchID}`}
+            >
               <span>Live Score</span>
             </Link>
           </div>
